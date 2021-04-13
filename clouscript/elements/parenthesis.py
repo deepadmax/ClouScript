@@ -63,6 +63,7 @@ class Parenthesis(Element):
                 f'Handedness must be either {self.LEFT} or {self.RIGHT}')
 
     @classmethod
+    @property
     def sequence(cls):
         """Find and access the Sequence of this Parenthesis"""
         
@@ -78,3 +79,5 @@ class Parenthesis(Element):
         else:
             raise UndefinedSequence(
                     f'Sequence is not defined for {cls.__name__}')
+
+        return cls.sequence
