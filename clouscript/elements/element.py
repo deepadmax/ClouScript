@@ -36,3 +36,10 @@ class Element:
         of subordinate elements as a tree structure
         """
         return repr(self)
+        
+    def __call__(self, *args, **kwargs):
+        return self.call(*args, **kwargs)
+
+    def call(self, *args, **kwargs):
+        """Calculate the value of the Element"""
+        return None
