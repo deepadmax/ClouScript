@@ -16,6 +16,16 @@ class NoMatch(LexingError):
     """No lexing rule could be matched"""
 
 
+# [ DELIMITER ]
+
+class DelimiterError(LexingError):
+    """Problem with delimiting elements"""
+
+class InvalidDelimiter(DelimiterError):
+    """Element type is a valid parenthesis group
+    but the value is not a valid parenthesis"""
+
+
 
 # ┌─────────┐
 # │ PARSING │

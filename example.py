@@ -24,6 +24,30 @@ class Round(Parenthesis):
 
 
 
+# ┌────────────┐
+# │ DELIMITERS │
+# └────────────┘
+
+from clouscript.elements.delimiter import Delimiter
+
+
+Delimiter.FLATTEN_MODE = 'local'
+
+
+class Semicolon(Delimiter):
+    character = ';'
+
+class Comma(Delimiter):
+    character = ','
+
+
+Delimiter.set_order([
+    Semicolon,
+    Comma
+])
+
+
+
 # ┌───────┐
 # │ LEXER │
 # └───────┘
@@ -39,13 +63,14 @@ lexer = Lexer(
         String
     ],
     [
-        Parenthesis
+        Parenthesis,
+        Delimiter
     ]
 )
 
 # 2. Write a piece of code to be lexed
 string = """
-1 2 ("3" "hello world!") 4 5
+1 2; [3, 4]
 """
 
 # 3. Lex string
