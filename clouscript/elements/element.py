@@ -24,3 +24,15 @@ class Element:
         a list of regular expression match groups from which
         to extract needed values
         """
+    
+    def __repr__(self):
+        return f'<{type(self).__name__}>'
+
+    def __str__(self):
+        return self.pretty()
+
+    def pretty(self, indent=0):
+        """Display the entire hierarchy
+        of subordinate elements as a tree structure
+        """
+        return repr(self)
