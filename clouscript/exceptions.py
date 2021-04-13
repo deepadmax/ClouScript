@@ -35,5 +35,9 @@ class InvalidParenthesis(ParenthesisError):
     """Attempting to create an instance of
     a non-existant Parenthesis subclass"""
 
+class MismatchedParentheses(ParenthesisError):
+    """Attempting to close a section
+    with an incorrect right-hand parenthesis"""
+
 class UndefinedSequence(ParenthesisError):
     """Sequence class has not been defined for Parenthesis"""

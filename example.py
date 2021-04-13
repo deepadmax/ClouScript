@@ -1,6 +1,7 @@
 import clouscript
 
 
+
 # ┌─────────────┐
 # │ PARENTHESES │
 # └─────────────┘
@@ -20,6 +21,7 @@ class Round(Parenthesis):
     right = ')'
     
     class Arguments(Sequence): pass
+
 
 
 # ┌───────┐
@@ -46,9 +48,23 @@ string = """
 1 2 ("3" "hello world!") 4 5
 """
 
-# 3. Lex it!
-elements = lexer.lex(string)
+# 3. Lex string
+elements = list(lexer.lex(string))
 
-# 4. Print the elements
-for element in elements:
-    print(element)
+
+
+# ┌────────┐
+# │ PARSER │
+# └────────┘
+
+from clouscript.parser import Parser
+
+
+# 1. Define a parser
+parser = Parser(
+    parenthesis=Parenthesis
+)
+
+# 2. Parse elements and print AST
+root = parser.parse(elements)
+print(root)
