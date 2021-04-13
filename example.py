@@ -70,7 +70,7 @@ lexer = Lexer(
 
 # 2. Write a piece of code to be lexed
 string = """
-1 2; [3, 4]
+1 2; [3, 2; 4]
 """
 
 # 3. Lex string
@@ -87,7 +87,8 @@ from clouscript.parser import Parser
 
 # 1. Define a parser
 parser = Parser(
-    parenthesis=Parenthesis
+    parenthesis=Parenthesis,
+    delimiter=Delimiter
 )
 
 # 2. Parse elements and print AST

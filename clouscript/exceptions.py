@@ -25,6 +25,9 @@ class InvalidDelimiter(DelimiterError):
     """Element type is a valid parenthesis group
     but the value is not a valid parenthesis"""
 
+class EmptySection(DelimiterError):
+    """Found empty section while delimiting"""
+
 
 
 # ┌─────────┐

@@ -71,7 +71,8 @@ class Parser:
         forming functions and infixes, etc.
         """
 
-        # TODO: Add delimiting
+        if self.delimiter is not None:
+            section = self.delimiter.delimit(section)
 
         # TODO: Add function formation
 
