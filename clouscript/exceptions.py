@@ -34,3 +34,6 @@ class ParenthesisError(ParsingError):
 class InvalidParenthesis(ParenthesisError):
     """Attempting to create an instance of
     a non-existant Parenthesis subclass"""
+
+class UndefinedSequence(ParenthesisError):
+    """Sequence class has not been defined for Parenthesis"""

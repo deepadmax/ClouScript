@@ -1,7 +1,9 @@
 import re
 
 from .element import Element
-from ..exceptions import InvalidParenthesis
+from .sequence import Sequence
+
+from ..exceptions import InvalidParenthesis, UndefinedSequence
 
 
 class Parenthesis(Element):
@@ -59,3 +61,20 @@ class Parenthesis(Element):
         
         raise ValueError(
                 f'Handedness must be either {self.LEFT} or {self.RIGHT}')
+
+    @classmethod
+    def sequence(cls):
+        """Find and access the Sequence of this Parenthesis"""
+        
+        # Iterate over all attributes
+        for attribute in dir(cls):
+            attr = getattr(cls, attribute)
+            
+            # When a Sequence is found,
+            # use that to replace this method and stop searching
+            if isinstance(attr, type) and issubclass(attr, Sequence):
+                cls.sequence = attr
+                break
+        else:
+            raise UndefinedSequence(
+                    f'Sequence is not defined for {cls.__name__}')
