@@ -1,6 +1,27 @@
 import clouscript
 
 
+# ┌─────────────┐
+# │ PARENTHESES │
+# └─────────────┘
+
+from clouscript.elements.sequence import Sequence
+from clouscript.elements.parenthesis import Parenthesis
+
+
+class Square(Parenthesis):
+    left = '['
+    right = ']'
+    
+    class List(Sequence): pass
+
+class Round(Parenthesis):
+    left = '('
+    right = ')'
+    
+    class Arguments(Sequence): pass
+
+
 # ┌───────┐
 # │ LEXER │
 # └───────┘
@@ -16,12 +37,13 @@ lexer = Lexer(
         String
     ],
     [
+        Parenthesis
     ]
 )
 
 # 2. Write a piece of code to be lexed
 string = """
-1 2 "3" "hello world!" 4 5
+1 2 ("3" "hello world!") 4 5
 """
 
 # 3. Lex it!
